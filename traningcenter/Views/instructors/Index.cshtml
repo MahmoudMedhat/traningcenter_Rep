@@ -1,0 +1,67 @@
+﻿@model IEnumerable<traningcenter.Models.instructor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<button type="button" id="btnSearch" class="btn btn-raised  right btn-primary" style="display:inline;">Get Report</button>
+
+<input id="btnclear" type="button" class="btn btn-danger right" value="clear" style="display: inline; margin-left: 3px" />
+
+
+<abbr title="Report filter by date">
+    <input type="date" id="searchText" class="form-control right" style="display:inline ; margin-left:50%" />
+
+</abbr>
+<p class="left" style="margin-top:10px">
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.instructors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cours.Name)
+        </th>
+        <th>
+
+        </th>
+
+        <th>
+
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.instructors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cours.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="row" id="divReport">
+</div>
+<script>
+
+
+</script>

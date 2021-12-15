@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("instructors", "Index", "instructors")</li>
+                    <li>@Html.ActionLink("students", "Index", "students")</li>
+                    <li>@Html.ActionLink("cours", "Index", "cours")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+   
+</body>
+</html>
+<script>
+    $(function () {
+        $('#btnSearch').click(function () {
+
+           
+               
+                $("#divReport").fadeIn('1000')
+                var searchText = $("#searchText").val();
+
+                var src = '../WebForm1.aspx?';
+
+                switch (searchText) {
+                    case "":
+                        src = '../WebForm1.aspx?';
+                        break;
+                    default:
+                        src = '../WebForm1.aspx?' + "searchText=" + searchText;
+                }
+                var iframe = '<iframe id="reportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                $("#divReport").html(iframe);
+                $("#show").val("False")
+            
+          
+
+        });
+
+        $('#btnclear').click(function () {
+
+            $("#divReport").fadeOut('1000');
+        });
+        
+    });
+</script>
